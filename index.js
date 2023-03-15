@@ -1,8 +1,16 @@
 const express = require('express');
 const cors = require("cors");
-require('./db/config');
+// require('./db/config');
+const DB = require("./db/config");
+require("dotenv").config();
+
 const User = require("./db/User");
+
+// console.log(process.env);
+const PORT=process.env.PORT;
 const app = express();
+
+DB.connectDB();
 
 app.use(express.json());
 app.use(cors());
@@ -18,4 +26,4 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(5000);
+app.listen(PORT||5000);
