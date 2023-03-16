@@ -10,24 +10,24 @@ package-lock.json
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/front-end/node_modules
-/front-end/package-lock.json
-/front-end/.pnp
-/front-end/.pnp.js
+/client/node_modules
+/client/package-lock.json
+/client/.pnp
+/client/.pnp.js
 
 # testing
-/front-end/coverage
+/client/coverage
 
 # production
-/front-end/build
+/client/build
 
 # misc
-/front-end/.DS_Store
-/front-end/.env.local
-/front-end/.env.development.local
-/front-end/.env.test.local
-/front-end/.env.production.local
+/client/.DS_Store
+/client/.env.local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
 
-/front-end/npm-debug.log*
-/front-end/yarn-debug.log*
-/front-end/yarn-error.log*
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarn-error.log*
