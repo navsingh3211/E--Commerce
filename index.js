@@ -20,6 +20,7 @@ app.use(cors());
 // Code block to serve frontend from server : 
 // (Replace client with your frontend folder name)
 //start-->
+
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (_, res) {
   res.sendFile(
@@ -35,9 +36,25 @@ app.get("*", function (_, res) {
 app.post("/register", async (req, res) => {
     let user = new User(req.body);
     let result = await user.save();
+    result = result.toObject();
+    delete result.password;
     res.send(result);
 });
 
+app.post("/login", async (req, res) => {
+    if (req.body.password && req.body.email) {
+      let user = await User.findOne(req.body).select("-password");
+      if (user) {
+        res.send(user);
+      } else {
+        res.send({ result: "user not found!" });
+      }
+    } else {
+      res.send({ result: "user not found!" });
+    }
+    
+    
+})
 app.get("/", (req, res) => {
     res.send("app is working");
 });

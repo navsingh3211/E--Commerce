@@ -60,6 +60,11 @@ li:last-child {
   margin-left: 30%;
 }
 
+.login{
+  margin-left: 30%;
+  margin-top: 100px;
+}
+
 .Appbutton{
   margin: 25px;
   padding: 10px;
@@ -67,6 +72,19 @@ li:last-child {
   background-color: skyblue;
   border:1px solid;
   cursor: pointer;
+}
+
+.nav-right{
+  text-align: right;
+  display:block;
+}
+
+.logo{
+  width: 45px;
+  float: left;
+  border-radius: 70%;
+  margin-top: 3px;
+  margin-left: 7px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
