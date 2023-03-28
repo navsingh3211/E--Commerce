@@ -1,23 +1,23 @@
-const express = require('express');
+const express = require("express");
 const cors = require("cors");
 // require('./db/config');
 const DB = require("./db/config");
 require("dotenv").config();
 
 const User = require("./db/User");
+const Product = require("./db/Product");
 const path = require("path");
 
 // console.log(process.env);
-const PORT=process.env.PORT;
+const PORT = process.env.PORT;
 const app = express();
-
 
 DB.connectDB();
 
 app.use(express.json());
 app.use(cors());
 
-// Code block to serve frontend from server : 
+// Code block to serve frontend from server :
 // (Replace client with your frontend folder name)
 //start-->
 
@@ -34,30 +34,34 @@ app.get("*", function (_, res) {
 //end<---
 
 app.post("/register", async (req, res) => {
-    let user = new User(req.body);
-    let result = await user.save();
-    result = result.toObject();
-    delete result.password;
-    res.send(result);
+  let user = new User(req.body);
+  let result = await user.save();
+  result = result.toObject();
+  delete result.password;
+  res.send(result);
 });
 
 app.post("/login", async (req, res) => {
-    if (req.body.password && req.body.email) {
-      let user = await User.findOne(req.body).select("-password");
-      if (user) {
-        res.send(user);
-      } else {
-        res.send({ result: "user not found!" });
-      }
+  if (req.body.password && req.body.email) {
+    let user = await User.findOne(req.body).select("-password");
+    if (user) {
+      res.send(user);
     } else {
       res.send({ result: "user not found!" });
     }
-    
-    
-})
-app.get("/", (req, res) => {
-    res.send("app is working");
+  } else {
+    res.send({ result: "user not found!" });
+  }
 });
 
+app.post("/add-product", async (req, res) => {
+  let product = new Product(req.body);
+  let result = await product.save();
+  res.send(result);
+});
 
-app.listen(PORT||5000);
+app.get("/", (req, res) => {
+  res.send("app is working");
+});
+
+app.listen(PORT || 5000);
