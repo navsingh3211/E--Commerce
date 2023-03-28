@@ -12,7 +12,7 @@ const Nav = () => {
       <img
         alt="logo"
         className="logo"
-        // src="https://cdn-icons-png.flaticon.com/512/4642/4642980.png"
+        src="https://cdn-icons-png.flaticon.com/512/4642/4642980.png"
       />
       {auth ? (
         <ul className="nav-ul">
