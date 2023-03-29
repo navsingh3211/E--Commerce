@@ -13,7 +13,6 @@ const { find } = require("./db/User");
 const PORT = process.env.PORT;
 const app = express();
 
-const __dirname = path.resolve();
 
 DB.connectDB();
 
