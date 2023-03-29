@@ -13,6 +13,8 @@ const { find } = require("./db/User");
 const PORT = process.env.PORT;
 const app = express();
 
+const __dirname = path.resolve();
+
 DB.connectDB();
 
 app.use(express.json());
@@ -32,9 +34,9 @@ app.use(cors());
 //   );
 // });
 
-app.use(express.static(path.join(path.resolve(path.dirname('')), "./client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(path.resolve(path.dirname('')), "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 //end<---
