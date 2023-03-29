@@ -22,21 +22,20 @@ app.use(cors());
 // (Replace client with your frontend folder name)
 //start-->
 
-app.use(express.static(path.join(__dirname, "./client/build")));
-app.get("/*", function (_, res) {
-    var path = require("path");
-    let filePath = "./client/build/index.html";
-    let resolvedPath = path.resolve(filePath);
-    res.sendFile(resolvedPath);
-    // res.sendFile(path.join(__dirname, path), function (err) {
-    // res.status(500).send(err);
- });
-
-
 // app.use(express.static(path.join(__dirname, "./client/build")));
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// app.get("/*", function (_, res) {
+//   res.sendFile(
+//     path.join(__dirname, "./client/build/index.html"),
+//     function (err) {
+//       res.status(500).send(err);
+//     }
+//   );
 // });
+
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 //end<---
 
@@ -77,7 +76,7 @@ app.get("/products", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    console.log(__dirname);
+    // console.log(__dirname);
     res.send("app is working");
 });
 
