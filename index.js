@@ -24,20 +24,20 @@ app.use(cors());
 // (Replace client with your frontend folder name)
 //start-->
 
-// app.use(express.static(path.join(__dirname, "./client/build")));
-// app.get("/*", function (_, res) {
-//   res.sendFile(
-//     path.join(__dirname, "./client/build/index.html"),
-//     function (err) {
-//       res.status(500).send(err);
-//     }
-//   );
-// });
-
 app.use(express.static(path.join(__dirname, "./client/build")));
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+app.get("/*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
 });
+
+// app.use(express.static(path.join(__dirname, "./client/build")));
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 //end<---
 
@@ -83,7 +83,7 @@ app.get("/", (req, res) => {
     res.send("app is working");
 });
 
-app.listen(PORT, () => {
+app.listen(PORT || 3000, () => {
     console.log("listening on port");
     console.log(PORT);
 });
