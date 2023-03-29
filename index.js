@@ -7,6 +7,7 @@ require("dotenv").config();
 const User = require("./db/User");
 const Product = require("./db/Product");
 const path = require("path");
+const { find } = require("./db/User");
 
 // console.log(process.env);
 const PORT = process.env.PORT;
@@ -60,8 +61,21 @@ app.post("/add-product", async (req, res) => {
   res.send(result);
 });
 
+app.get("/products", async (req, res) => {
+    let products = await Product.find();
+    if (products.length > 0) {
+        res.send(products);
+    } else {
+        res.send({result:"No product found !"})
+    }
+});
+
 app.get("/", (req, res) => {
+    console.log("dnsjd ");
   res.send("app is working");
 });
 
-app.listen(PORT || 5000);
+app.listen(PORT, () => {
+    // console.log("listening on port");
+    // console.log(PORT);
+});
