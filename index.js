@@ -33,10 +33,7 @@ app.get("/*", function (_, res) {
   );
 });
 
-// app.use(express.static(path.join(__dirname, "./client/build")));
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+
 
 //end<---
 
@@ -49,7 +46,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-    // console.log(__dirname);
+
   if (req.body.password && req.body.email) {
     let user = await User.findOne(req.body).select("-password");
     if (user) {
