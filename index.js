@@ -29,7 +29,7 @@ app.get("/*", function (_, res) {
     let resolvedPath = path.resolve(filePath);
     res.sendFile(resolvedPath);
     // res.sendFile(path.join(__dirname, path), function (err) {
-    res.status(500).send(err);
+    // res.status(500).send(err);
  });
 
 
