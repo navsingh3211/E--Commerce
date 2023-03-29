@@ -87,6 +87,13 @@ li:last-child {
   margin-left: 7px;
 }
 
+.invalid-input{
+  color:dimgrey;
+  margin-top: -20px;
+  display: block;
+  margin-left: 25px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
