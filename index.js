@@ -24,13 +24,14 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("/*", function (_, res) {
-  res.sendFile(
-    path.join(__dirname, "./client/build/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
-});
+    var path = require("path");
+    let filePath = "./client/build/index.html";
+    let resolvedPath = path.resolve(filePath);
+    res.sendFile(resolvedPath);
+    // res.sendFile(path.join(__dirname, path), function (err) {
+    res.status(500).send(err);
+ });
+
 
 // app.use(express.static(path.join(__dirname, "./client/build")));
 // app.get("/*", function (req, res) {
@@ -76,11 +77,11 @@ app.get("/products", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    console.log("dnsjd ");
-  res.send("app is working");
+    console.log(__dirname);
+    res.send("app is working");
 });
 
 app.listen(PORT, () => {
-    // console.log("listening on port");
-    // console.log(PORT);
+    console.log("listening on port");
+    console.log(PORT);
 });
