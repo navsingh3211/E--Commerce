@@ -12,7 +12,7 @@ const Login = () => {
   });
   const handleLogin = async () => {
     //useing async as function bsc fetch return a promise
-    let result = await fetch("http://localhost:5000/login", {
+    let result = await fetch("/login", {
       //using await bcs fetch api return a promise
       method: "POST",
       body: JSON.stringify({ email, password }),
